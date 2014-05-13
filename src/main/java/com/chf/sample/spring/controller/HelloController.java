@@ -1,4 +1,4 @@
-package com.chf.sample.spring.boot;
+package com.chf.sample.spring.controller;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
