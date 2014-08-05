@@ -9,18 +9,16 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.context.annotation.Import;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.chf.sample.spring.config.SpringConfig;
+
 @Configuration
 @EnableAutoConfiguration
-@EnableAspectJAutoProxy
-@EnableTransactionManagement
-@ComponentScan
+@Import({ SpringConfig.class })
 @RestController
 public class Application extends SpringBootServletInitializer {
 

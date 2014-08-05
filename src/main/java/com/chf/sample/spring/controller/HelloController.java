@@ -9,7 +9,7 @@ import com.chf.sample.domain.A;
 @RestController
 public class HelloController {
 
-	@RequestMapping("/hello/{name}")
+	@RequestMapping("/hi/{name}")
 	public String index(@PathVariable("name") String name) {
 		return String.format("Hello,  %s.", name);
 	}

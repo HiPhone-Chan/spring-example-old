@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
+import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 
@@ -65,6 +66,14 @@ public class HibernateConfig {
 	}
 
 	@Bean
+	@Autowired
+	public HibernateTemplate hibernateTemplate(SessionFactory sessionFactory) {
+		HibernateTemplate template = new HibernateTemplate();
+		template.setSessionFactory(sessionFactory);
+		return template;
+	}
+
+	@Bean
 	public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
 		return new PersistenceExceptionTranslationPostProcessor();
 	}
@@ -83,7 +92,8 @@ public class HibernateConfig {
 		hibernateProperties.setProperty(
 				"hibernate.globally_quoted_identifiers",
 				env.getProperty("hibernate.globally_quoted_identifiers"));
-
+		hibernateProperties.setProperty("hibernate.dialect",
+				env.getProperty("hibernate.dialect"));
 		return hibernateProperties;
 	}
 

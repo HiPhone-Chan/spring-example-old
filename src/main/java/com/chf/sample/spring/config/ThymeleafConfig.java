@@ -6,7 +6,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.spring4.SpringTemplateEngine;
+import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
+import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 import org.thymeleaf.templateresolver.TemplateResolver;
 
@@ -14,10 +16,31 @@ import org.thymeleaf.templateresolver.TemplateResolver;
 public class ThymeleafConfig {
 
 	@Bean
-	public TemplateResolver templateResolver() {
-		ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver();
-		templateResolver.setPrefix("templates");
+	public TemplateResolver servletContextTemplateResolver() {
+		TemplateResolver templateResolver = new ServletContextTemplateResolver();
+
+		templateResolver.setPrefix("WEB-INF/html");
 		templateResolver.setSuffix(".html");
+		templateResolver.setTemplateMode("HTML5");
+		return templateResolver;
+	}
+
+	@Bean
+	public TemplateResolver springResourceTemplateResolver() {
+		TemplateResolver templateResolver = new SpringResourceTemplateResolver();
+
+		templateResolver.setPrefix("classpath:/templates/js/");
+		templateResolver.setSuffix(".js");
+		templateResolver.setTemplateMode("HTML5");
+		return templateResolver;
+	}
+
+	@Bean
+	public TemplateResolver classLoaderTemplateResolver() {
+		TemplateResolver templateResolver = new ClassLoaderTemplateResolver();
+
+		templateResolver.setPrefix("img");
+		templateResolver.setSuffix(".jpg");
 		templateResolver.setTemplateMode("HTML5");
 		return templateResolver;
 	}
