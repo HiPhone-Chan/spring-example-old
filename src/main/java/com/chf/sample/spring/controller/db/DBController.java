@@ -32,7 +32,6 @@ public class DBController {
 	@RequestMapping("/save")
 	public String save() {
 		Event e = new Event();
-		e.setId(1L);
 		e.setTitle("title");
 		e.setDate(new Date());
 		eventDao.save(e);

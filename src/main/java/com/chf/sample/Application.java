@@ -27,10 +27,12 @@ public class Application extends SpringBootServletInitializer {
 	private AtomicLong counter = new AtomicLong();
 
 	public static void main(String[] args) {
-		ctx = SpringApplication.run(Application.class, args);
+		SpringApplication app = new SpringApplication(Application.class);
+		app.setShowBanner(false);
+		app.setLogStartupInfo(false);
+		ctx = app.run(args);
 
 		List<String> names = Arrays.asList(ctx.getBeanDefinitionNames());
-
 		names.sort((a, b) -> a.compareTo(b));
 		names.forEach(name -> System.err.println(name));
 	}
