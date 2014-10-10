@@ -6,14 +6,15 @@
 		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd
 		http://www.springframework.org/schema/integration/http http://www.springframework.org/schema/integration/http/spring-integration-http.xsd">
 
-	<int:gateway id="requestGateway"
-		service-interface="com.chf.sample.spring.integration.http.RequestGateway"
-		default-request-channel="requestChannel" />
+	<int:channel id="inputChannel" />
 
-	<int:channel id="requestChannel" />
+	<int:channel id="outputChannel">
+		<int:queue capacity="10" />
+	</int:channel>
 
-	<int-http:outbound-gateway request-channel="requestChannel"
-		default-url="http://localhost:8080/http/receiveGateway"
-		request-executor="post" />
+	<int:service-activator input-channel="inputChannel"
+		output-channel="outputChannel" ref="helloService" method="sayHello" />
+
+	<bean id="helloService" class="com.chf.sample.spring.integration.http.RequestGateway" />
 
 </beans>
