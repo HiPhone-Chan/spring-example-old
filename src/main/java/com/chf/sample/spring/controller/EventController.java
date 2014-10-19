@@ -1,8 +1,9 @@
 package com.chf.sample.spring.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -12,14 +13,16 @@ import com.chf.sample.domain.Event;
 public class EventController {
 
 	@RequestMapping(value = "/greeting", method = RequestMethod.GET)
-	public String greetingForm(Model model) {
-		model.addAttribute("event", new Event());
+	public String greetingForm(Event event) {
+		// model.addAttribute("event", new Event());
 		return "event";
 	}
 
 	@RequestMapping(value = "/greeting", method = RequestMethod.POST)
-	public String greetingSubmit(@ModelAttribute Event event, Model model) {
-		model.addAttribute("event", event);
+	public String greetingSubmit(@Valid Event event, BindingResult bindingResult) {
+		if (bindingResult.hasErrors()) {
+			return "event";
+		}
 		return "result";
 	}
 }

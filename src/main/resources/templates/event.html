@@ -11,6 +11,8 @@
 		<p>
 			Id: <input type="text" th:field="*{id}" />
 		</p>
+		<p th:if="${#fields.hasErrors('id')}" th:errors="*{id}">Name
+			Error</p>
 		<p>
 			Message: <input type="text" th:field="*{title}" />
 		</p>

@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:task="http://www.springframework.org/schema/task"
 	xsi:schemaLocation="
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd
 		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd
 		http://www.springframework.org/schema/integration/http http://www.springframework.org/schema/integration/http/spring-integration-http.xsd"
@@ -25,6 +25,5 @@
 	<int:service-activator input-channel="inputChannel"
 		output-channel="outputChannel" ref="helloService" method="sayHello" />
 
-	<beans:bean id="helloService"
-		class="org.springframework.integration.samples.helloworld.HelloService" />
+	<bean id="helloService" class="com.chf.sample.spring.integration.http.RequestGateway" />
 </beans:beans>

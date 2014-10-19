@@ -27,6 +27,6 @@ public class HttpClient {
 		logger.info("==> HelloWorldDemo: "
 				+ outputChannel.receive(0).getPayload());
 
-		// ((ClassPathXmlApplicationContext) context).close();
+		((ClassPathXmlApplicationContext) context).close();
 	}
 }

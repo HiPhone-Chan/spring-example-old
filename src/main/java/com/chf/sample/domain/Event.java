@@ -5,12 +5,16 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Event {
 
 	@Id
 	@GeneratedValue
+	@Digits(fraction = 0, integer = Integer.MAX_VALUE)
+	@NotNull
 	private Long id;
 
 	private String title;
