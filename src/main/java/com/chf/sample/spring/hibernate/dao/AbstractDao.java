@@ -14,5 +14,5 @@ public interface AbstractDao<T> {
 
 	List<T> queryAll();
 
-	T getByID(Long id);
+	Object getByID(Long id);
 }
