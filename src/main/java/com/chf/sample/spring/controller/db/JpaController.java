@@ -1,5 +1,6 @@
 package com.chf.sample.spring.controller.db;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -9,19 +10,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.chf.sample.domain.Event;
-import com.chf.sample.spring.hibernate.dao.EventDao;
+import com.chf.sample.spring.controller.dao.EventRepository;
 
 @RestController
 @Transactional
-@RequestMapping("/hibernate")
-public class DBController {
+@RequestMapping("/jpa")
+public class JpaController {
 
     @Autowired
-    private EventDao eventDao;
+    private EventRepository eventRepository;
 
     @RequestMapping("/query")
     public List<Event> queryAll() {
-        return eventDao.queryAll();
+
+        List<Event> list = new ArrayList<Event>();
+
+        eventRepository.findAll().forEach(e -> list.add(e));
+
+        return list;
     }
 
     @RequestMapping("/save")
@@ -29,7 +35,7 @@ public class DBController {
         Event e = new Event();
         e.setTitle("title");
         e.setDate(new Date());
-        eventDao.save(e);
+        eventRepository.save(e);
         return String.format("Save!");
     }
 }
