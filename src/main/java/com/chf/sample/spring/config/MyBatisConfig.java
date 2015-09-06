@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.chf.sample.spring.controller.dao.EventMapper;
-
 @Configuration
 @MapperScan("com.chf.sample.spring.controller.dao")
 public class MyBatisConfig {
@@ -29,18 +27,9 @@ public class MyBatisConfig {
     @Autowired
     public SqlSessionTemplate sqlSessionTemplate(
             SqlSessionFactory sqlSessionFactory) {
-        sqlSessionFactory.getConfiguration().addMapper(EventMapper.class);
         SqlSessionTemplate sessionTemplate = new SqlSessionTemplate(
                 sqlSessionFactory);
         return sessionTemplate;
     }
 
-    @Bean
-    @Autowired
-    public EventMapper eventMapper(SqlSessionTemplate sqlSessionTemplate)
-            throws Exception {
-
-        EventMapper mapper = sqlSessionTemplate.getMapper(EventMapper.class);
-        return mapper;
-    }
 }
