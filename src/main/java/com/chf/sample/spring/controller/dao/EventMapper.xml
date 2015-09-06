@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chf.sample.spring.controller.dao.EventMapper">
+
+	<cache />
+
+	<insert id="insert" parameterType="com.chf.sample.domain.Event"
+		flushCache="true" statementType="PREPARED" timeout="20">
+		insert into event
+		(id, title, date)
+		values
+		(#{id},#{title},#{date})
+	</insert>
+</mapper>
