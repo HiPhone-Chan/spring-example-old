@@ -14,7 +14,7 @@ import com.chf.sample.spring.hibernate.dao.EventDao;
 @RestController
 @Transactional
 @RequestMapping("/hibernate")
-public class DBController {
+public class HibernateController {
 
     @Autowired
     private EventDao eventDao;
@@ -30,6 +30,6 @@ public class DBController {
         e.setTitle("title");
         e.setDate(new Date());
         eventDao.save(e);
-        return String.format("Save!");
+        return "Save!";
     }
 }
