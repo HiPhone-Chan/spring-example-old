@@ -10,7 +10,7 @@ public class UserAuthKI {
 	public static void main(String[] arg) {
 
 		String user = "root";
-		String host = "10.137.151.200";
+		String host = "10.137.151.253";
 		int port = 22;
 
 		try {

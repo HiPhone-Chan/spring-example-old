@@ -7,9 +7,9 @@ import com.jcraft.jsch.UserInfo;
 
 public class MyUserInfo implements UserInfo, UIKeyboardInteractive {
 
-	private String passwd;
+	private String passwd = "huawei";
 
-	private Scanner sc = new Scanner(System.in);
+	private Scanner sc = new Scanner(System.in);;
 
 	public String getPassword() {
 		return passwd;
@@ -63,7 +63,6 @@ public class MyUserInfo implements UserInfo, UIKeyboardInteractive {
 		for (int i = 0; i < prompt.length; i++) {
 			response[i] = sc.next();
 		}
-
 		return response;
 	}
 
