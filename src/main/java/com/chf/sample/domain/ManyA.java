@@ -1,21 +1,19 @@
 package com.chf.sample.domain;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-public class Event {
+@Table(name = "manyA")
+public class ManyA {
 
 	@Id
 	@GeneratedValue
 	private Long id;
 
-	private String title;
-
-	private Date date;
+	private String value;
 
 	public Long getId() {
 		return id;
@@ -25,19 +23,12 @@ public class Event {
 		this.id = id;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getValue() {
+		return value;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setValue(String value) {
+		this.value = value;
 	}
 
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
 }
