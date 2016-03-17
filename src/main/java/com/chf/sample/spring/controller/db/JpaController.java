@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -12,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.chf.sample.domain.Customer;
 import com.chf.sample.domain.Event;
 import com.chf.sample.domain.ManyA;
 import com.chf.sample.domain.One;
+import com.chf.sample.spring.controller.dao.CustomerRepository;
 import com.chf.sample.spring.controller.dao.EventRepository;
 import com.chf.sample.spring.controller.dao.ManyARepository;
 import com.chf.sample.spring.controller.dao.ManyBRepository;
@@ -49,10 +52,9 @@ public class JpaController {
 
 	@RequestMapping(value = "/save", method = RequestMethod.GET)
 	public String save() {
-		Event e = new Event();
-		e.setTitle("title");
-		e.setDate(new Date());
+		Event e = new Event("title", new Date());
 		eventRepository.save(e);
+
 		return String.format("Save!");
 	}
 
@@ -74,8 +76,7 @@ public class JpaController {
 	}
 
 	@RequestMapping(value = "/one2many", method = RequestMethod.GET)
-	public One one2many(
-			@RequestHeader(value = "id", required = false) Long id) {
+	public One one2many(@RequestHeader(value = "id", required = false) Long id) {
 		if (StringUtils.isEmpty(id)) {
 			One one = new One();
 			one.setValue("1");

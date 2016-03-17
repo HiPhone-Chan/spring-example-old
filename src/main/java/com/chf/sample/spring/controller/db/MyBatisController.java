@@ -27,9 +27,7 @@ public class MyBatisController {
 
 	@RequestMapping(value = "/save", method = RequestMethod.GET)
 	public String save() {
-		Event e = new Event();
-		e.setTitle("title");
-		e.setDate(new Date());
+		Event e = new Event("title", new Date());
 		eventMapper.insert(e);
 		return "Save!";
 	}

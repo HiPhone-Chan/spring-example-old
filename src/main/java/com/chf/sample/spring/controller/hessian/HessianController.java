@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.caucho.services.client.ServiceProxyFactory;
 import com.sun.xml.internal.messaging.saaj.util.ByteInputStream;
 
+@SuppressWarnings("restriction")
 @RestController
 @RequestMapping(value = "/hessian")
 public class HessianController {
@@ -34,7 +35,7 @@ public class HessianController {
         return service.sayHello();
     }
 
-    @RequestMapping(value = "/upload", method = GET)
+	@RequestMapping(value = "/upload", method = GET)
     public String upload() throws MalformedURLException, FileNotFoundException {
 
         Service service = (Service) factory.create(Service.class, URL);

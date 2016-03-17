@@ -10,7 +10,7 @@
 		timeToIdleSeconds="1200" timeToLiveSeconds="1200">
 		<terracotta />
 	</defaultCache>
-	<cache name="sampleCache1" maxEntriesLocalHeap="10000"
+	<cache name="sampleCache1" maxEntriesLocalHeap="500"
 		maxEntriesLocalDisk="1000" eternal="false" diskSpoolBufferSizeMB="20"
 		timeToIdleSeconds="300" timeToLiveSeconds="600"
 		memoryStoreEvictionPolicy="LFU" transactionalMode="off">

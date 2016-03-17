@@ -17,6 +17,12 @@ public class Event {
 
 	private Date date;
 
+	public Event(String title, Date date) {
+		super();
+		this.title = title;
+		this.date = date;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -40,4 +46,11 @@ public class Event {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+
+	@Override
+	public String toString() {
+		return "Event [id=" + id + ", title=" + title + ", date=" + date + "]";
+	}
+	
+	
 }

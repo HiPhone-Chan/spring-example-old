@@ -11,6 +11,7 @@ import com.chf.sample.domain.HelloMessage;
 
 @Controller
 public class SocketController {
+
 	@MessageMapping("/hello")
 	@SendTo("/topic/greetings")
 	public Greeting greeting(HelloMessage message) throws Exception {
