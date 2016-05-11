@@ -22,6 +22,14 @@
 			</dependency>
 
 			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Angel.SR6</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<dependency>
 				<groupId>com.vaadin</groupId>
 				<artifactId>vaadin-bom</artifactId>
 				<version>7.6.4</version>
@@ -74,6 +82,17 @@
 			<groupId>org.springframework.statemachine</groupId>
 			<artifactId>spring-statemachine-core</artifactId>
 			<version>1.0.1.RELEASE</version>
+		</dependency>
+
+		<!-- cloud -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-eureka-server</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-zuul</artifactId>
 		</dependency>
 
 		<dependency>
@@ -190,6 +209,11 @@
 			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>jetty-proxy</artifactId>
 			<version>9.2.15.v20160210</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-servlet</artifactId>
 		</dependency>
 	</dependencies>
 

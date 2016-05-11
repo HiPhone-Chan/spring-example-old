@@ -9,10 +9,12 @@ import reactor.bus.EventBus;
 @Service
 public class Publisher {
 
+	public static final String KEY = "quotes";
+
 	@Autowired
 	private EventBus eventBus;
 
 	public void publishQuotes(String message) throws InterruptedException {
-		eventBus.notify(Receiver.KEY, Event.wrap(message));
+		eventBus.notify(KEY, Event.wrap(message));
 	}
 }
