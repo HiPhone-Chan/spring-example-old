@@ -25,4 +25,9 @@ public class EventController {
 		}
 		return "result";
 	}
+
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String index() {
+		return "redirect:/swagger-ui.html";
+	}
 }

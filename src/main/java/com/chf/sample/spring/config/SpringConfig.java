@@ -20,7 +20,7 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 @ComponentScan(basePackages = { "com.chf.sample.domain", "com.chf.sample.spring" })
 @EnableScheduling
 @ImportResource("classpath:spring-application.xml")
-@PropertySource("classpath:myApplication.properties")
+@PropertySource(value = { "classpath:myApplication.properties" }, ignoreResourceNotFound = true)
 public class SpringConfig {
 
 	@Bean

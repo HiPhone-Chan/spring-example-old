@@ -8,17 +8,12 @@ import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.chf.sample.spring.config.CloudConfig;
 import com.chf.sample.spring.config.SpringConfig;
 
 @Configuration
 @EnableAutoConfiguration
-@Import({ SpringConfig.class, CloudConfig.class })
-@Controller
+@Import({ SpringConfig.class })
 public class Application extends SpringBootServletInitializer {
 
 	private static ApplicationContext ctx;
@@ -37,11 +32,6 @@ public class Application extends SpringBootServletInitializer {
 		builder.logStartupInfo(false);
 		ctx = builder.context();
 		return builder;
-	}
-
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String index() {
-		return "redirect:/swagger-ui.html";
 	}
 
 	public static Object getBean(String beanName) {
