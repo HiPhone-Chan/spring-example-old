@@ -16,14 +16,4 @@
 		scheduler="myScheduler"> <task:scheduled ref="scheduleTasks" method="task" 
 		fixed-delay="5000" /> </task:scheduled-tasks> -->
 
-	<int:channel id="inputChannel" />
-
-	<int:channel id="outputChannel">
-		<int:queue capacity="10" />
-	</int:channel>
-
-	<int:service-activator input-channel="inputChannel"
-		output-channel="outputChannel" ref="helloService" method="sayHello" />
-
-	<bean id="helloService" class="com.chf.sample.spring.integration.http.RequestGateway" />
 </beans:beans>
